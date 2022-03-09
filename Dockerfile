@@ -51,7 +51,34 @@ RUN apt-get -qqy update \
     && apt-get autoclean \
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-
+    && apt-get update
+&& apt --fix-broken install
+&& apt update
+&& apt update && apt -y upgrade
+&& apt --fix-broken install
+&& apt install -y gnupg2
+&& apt --fix-broken install
+&& wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
+echo "deb http://deb.anydesk.com/ all main" | tee /etc/apt/sources.list.d/anydesk-stable.list
+&& apt --fix-broken install
+&& apt -y update && apt -y install anydesk
+&& apt --fix-broken install
+&& wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
+&& chmod a+rx /usr/local/bin/youtube-dl
+&& apt --fix-broken install
+&& apt-get install qbittorrent
+&& apt-get install speedtest-cli
+&& apt-get install uget
+&& apt-get install unrar
+&& apt-get install unzip
+&& apt --fix-broken install
+&& wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
+&& dpkg --install chrome-remote-desktop_current_amd64.deb
+&& apt install --assume-yes --fix-broken
+&& wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+&& dpkg --install google-chrome-stable_current_amd64.deb
+&& apt install --assume-yes --fix-broken
+&& apt install nautilus nano -y 
 # COPY conf.d/* /etc/supervisor/conf.d/
 
 
